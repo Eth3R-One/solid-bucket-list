@@ -17,8 +17,9 @@ export function BucketListItem(props) {
             props.setItems((items) => {
               const newItems = items.map((item) =>
                 props.item === item
-                  ? { ...item, complete: !item.complete }
-                  : item
+                ? { ...item, complete: !item.complete }
+                : item
+              
               );
               saveWish(newItems);
               return newItems;
