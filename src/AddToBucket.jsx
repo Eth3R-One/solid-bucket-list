@@ -1,7 +1,8 @@
 import { createSignal } from "solid-js";
+import { saveWish } from "./util/localStorageUtil";
 
 export function AddToBucket(props) {
-  const [newItem, setNewItem] = createSignal('');
+  const [newItem, setNewItem] = createSignal("");
 
   return (
     <form class="flex items-center gap-2">
@@ -20,9 +21,18 @@ export function AddToBucket(props) {
         onClick={(e) => {
           e.preventDefault();
           props.setItems((items) => {
-            return [...items, { text: newItem(), complete: false }].reverse();
+            const allWishes = [
+              {
+                id: crypto.randomUUID(),
+                text: newItem(),
+                complete: false,
+              },
+              ...items,
+            ];
+            saveWish(allWishes);
+            return allWishes;
           });
-          setNewItem('');
+          setNewItem("");
         }}
       >
         Add

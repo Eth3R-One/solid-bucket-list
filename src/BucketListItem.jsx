@@ -1,3 +1,5 @@
+import { saveWish } from "./util/localStorageUtil";
+
 export function BucketListItem(props) {
   return (
     <li>
@@ -18,6 +20,7 @@ export function BucketListItem(props) {
                   ? { ...item, complete: !item.complete }
                   : item
               );
+              saveWish(newItems);
               return newItems;
             });
           }}
