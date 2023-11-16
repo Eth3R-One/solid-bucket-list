@@ -1,8 +1,6 @@
 import { createSignal } from "solid-js";
 import { saveWish } from "./util/localStorageUtil";
 
-import { saveWish } from "./util/localStorageUtil";
-
 export function AddToBucket(props) {
   const [newItem, setNewItem] = createSignal("");
 
